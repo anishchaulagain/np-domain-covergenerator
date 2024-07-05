@@ -1,7 +1,7 @@
 
 'use client'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const CoverForm = () => {
     const [domain, setDomain] = useState('')
@@ -9,6 +9,14 @@ const CoverForm = () => {
     const [secondary, setSecondary] = useState('')
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
+   //console.log('domain:',domain)
+    const [currentDate, setCurrentDate] = useState('');
+
+    useEffect(() => {
+        const date = new Date();
+        const formattedDate = date.toLocaleDateString(); // You can customize the date format here
+        setCurrentDate(formattedDate);
+    }, []);
 
     return (
         <div className="container mx-auto" >
@@ -21,7 +29,7 @@ const CoverForm = () => {
                 <section className='mt-10 '>
                     <form className='flex flex-col gap-y-5 pt-10'>
                         <div>
-                            <label htmlFor="UserDomain" className="block text-xs font-medium text-gray-700"> Email </label>
+                            <label htmlFor="UserDomain" className="block text-xs font-medium text-gray-700"> Domain Name </label>
 
                             <input
                                 type="text"
@@ -30,6 +38,7 @@ const CoverForm = () => {
                                 className="mt-2 w-full rounded-md border-gray-500 shadow-sm sm:text-sm py-3"
                                 value={domain}
                                 onChange={(e) => setDomain(e.target.value)}
+                                
                             />
                         </div>
 
@@ -85,8 +94,45 @@ const CoverForm = () => {
                     </form>
                 </section>
 
-                <section>
-                   
+                <section className='container mt-10 bg-[#f9fafb] py-12 '>
+                    <div>
+                        <h2 className='text-right'>Date: {currentDate}</h2>
+                    </div>
+
+                    <div className='mt-10 flex flex-col gap-y-3'>
+                        <h2>To,</h2>
+                        <h2>The Hostmaster</h2>
+                        <h2>Mercantile Communication Pvt. Ltd</h2>
+                        <h2>Durbar Marg, Kathmandu</h2>
+                    </div>
+
+                    <div className='mt-10 text-center'>
+                        <h2 className='font-bold'>Subject: NP Domain Registration</h2>
+                    </div>
+
+                    <div>
+                        <h2 className='mt-10'>Dear Sir/Madam,</h2>
+
+                    </div>
+
+                    <div className='mt-5'>
+                        <h2>I am writing this letter to request you to kindly register a <span className='font-bold cursor-pointer'>{domain}</span> for me based on my name. I have provided my personal details, and also attached a scanned copy of my citizenship with this letter.I would be very glad if you approve my domain registration request.
+                            Thank you very much for consideration. I look forward to hearing from you soon.</h2>
+                    </div>
+                    <div className='mt-10'>
+                        <h2>Thank you very much for consideration. I look forward to hearing from you soon.</h2>
+                    </div>
+                    <div className='mt-10 flex flex-col gap-y-3 '>
+                        <h2>Domain name: <span className='font-bold'>{domain}</span> </h2>
+                        <h2>Primary Name Server: <span className='font-bold'>{primary}</span> </h2>
+                        <h2>Secondary Name Server: <span className='font-bold'>{secondary}</span> </h2>
+                    </div>
+
+                    <div className='mt-10 flex flex-col gap-y-3'>
+                        <h2>Yours Sincerely,</h2>
+                        <h2>Name: <span className='font-bold'>{name}</span></h2>
+                        <h2>Address: <span className='font-bold'>{address}</span></h2>
+                    </div>
                 </section>
             </div>
         </div>
