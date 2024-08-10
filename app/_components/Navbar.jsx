@@ -12,7 +12,7 @@ const Navbar = () => {
 
     const [activeIndex, setActiveIndex] = useState(null);
 
-    
+
 
     const navigation = [
         {
@@ -30,10 +30,10 @@ const Navbar = () => {
         {
             id: 3,
             title: 'COVER LETTER',
-            href: '#projects'
+            href: '/coverletter'
 
         },
-       
+
 
     ]
     return (
@@ -51,7 +51,7 @@ const Navbar = () => {
                             <div className="flex items-center gap-6 md:gap-10 lg:gap-12 text-sm font-bold ">
 
                                 {navigation.map((item, index) => (
-                                    <a href={item.href}  key={item.id} className={`nav-link ${activeIndex === index ? 'text-[#5c7af8]' : ''}`}>{item.title}</a>
+                                    <a href={item.href} key={item.id} className={`nav-link ${activeIndex === index ? 'text-[#5c7af8]' : ''}`}>{item.title}</a>
                                 ))}
 
                             </div>
@@ -62,9 +62,9 @@ const Navbar = () => {
                         <div className=" sm:gap-4 hidden sm:block">
                             <a
                                 className="rounded-md bg-[#5c7af8] px-5 py-2.5 text-sm font-medium text-white shadow"
-                                href="https://drive.google.com/file/d/1Eg-3ReaQkCW7LnqsAjuqiCpuJ9U7lPyC/view"
+                                href="/coverletter"
                             >
-                                DOWNLOAD CV
+                                Get Started
                             </a>
 
 
