@@ -2,7 +2,7 @@
 'use client'
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
-import { toPng } from 'html-to-image';
+import { toJpeg } from 'html-to-image';
 import { Button } from '@/components/ui/button';
 
 const CoverForm = () => {
@@ -16,22 +16,23 @@ const CoverForm = () => {
 
     const sectionRef = useRef(null);
 
-    const downloadImage = () => {
-        if (sectionRef.current === null) {
-            return;
-        }
+   const downloadImage = () => {
+  if (!sectionRef.current) return;
 
-        toPng(sectionRef.current)
-            .then((dataUrl) => {
-                const link = document.createElement('a');
-                link.href = dataUrl;
-                link.download = 'cover_letter.jpg';
-                link.click();
-            })
-            .catch((err) => {
-                console.error('Failed to download image', err);
-            });
-    };
+  toJpeg(sectionRef.current, {
+    quality: 0.95, 
+    backgroundColor: '#ffffff',
+  })
+    .then((dataUrl) => {
+      const link = document.createElement('a');
+      link.href = dataUrl;
+      link.download = 'cover_letter.jpg'; // JPG file
+      link.click();
+    })
+    .catch((err) => {
+      console.error('Failed to download image', err);
+    });
+};
 
     useEffect(() => {
         const date = new Date();
