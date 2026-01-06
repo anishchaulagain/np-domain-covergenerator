@@ -21,7 +21,7 @@ const CoverForm = () => {
             return;
         }
 
-        toPng(sectionRef.current, { cacheBust: true, })
+        toPng(sectionRef.current, { cacheBust: true, pixelRatio: 4, scale: 2 })
             .then((dataUrl) => {
                 const link = document.createElement('a');
                 link.href = dataUrl;
@@ -38,7 +38,7 @@ const CoverForm = () => {
             return;
         }
 
-        toPng(sectionRef.current, { cacheBust: true, })
+        toPng(sectionRef.current, { cacheBust: true, pixelRatio: 4, scale: 2 })
             .then((dataUrl) => {
                 const pdf = new jsPDF({
                     orientation: 'portrait',
